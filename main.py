@@ -103,7 +103,8 @@ def filter_k_urls(group_df):
     return filtered_df
 try :
     filtered_serps = serps_grpby_keyword.apply(filter_k_urls)
-except :
+except e :
+    print(e)
     pass
 # Combine
 ## Add prefix to column names
@@ -118,7 +119,8 @@ try :
 
     # convert results to strings using Split Apply Combine
     filtserps_grpby_keyword = filtered_serps_df.groupby("keyword")
-except :
+except e :
+    print(e)
     pass
 def string_serps(df):
     df['serp_string'] = ''.join(df['url'])
@@ -131,7 +133,8 @@ try:
     strung_serps = pd.concat([strung_serps],axis=0)
     strung_serps = strung_serps[['keyword', 'serp_string']]#.head(30)
     strung_serps = strung_serps.drop_duplicates()
-except :
+except e :
+    print(e)
     pass
 # align serps
 def serps_align(k, df):
@@ -152,7 +155,8 @@ try:
         temp_df = serps_align(q, strung_serps)
         matched_serps = matched_serps.append(temp_df)
     ws_tok = sm.WhitespaceTokenizer()
-except :
+except e :
+    print(e)
     pass
 
 
@@ -205,7 +209,8 @@ try:
     st.dataframe(keywords_filtered_nonnan)
     st.markdown(get_table_download_link(keywords_filtered_nonnan,'keywords_filtered_nonnan'), unsafe_allow_html=True)
     queries_in_df = list(set(keywords_filtered_nonnan.topic.to_list()))
-except :
+except e :
+    print(e)
     pass
 topic_groups_numbered = {}
 topics_added = []
@@ -246,5 +251,6 @@ try:
     st.dataframe(topic_groups_dictdf)
     st.markdown(get_table_download_link(topic_groups_dictdf,'topic_groups_dictdf'), unsafe_allow_html=True)
 
-except :
+except e :
+    print(e)
     pass
