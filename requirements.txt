@@ -1,6 +1,6 @@
-google_search_results==2.4.0
-requests==2.25.1
-py_stringmatching==0.4.2
-numpy==1.20.2
-streamlit==0.86.0
-pandas==1.2.4
+google_search_results>=2.4.0
+requests>=2.25.1
+py_stringmatching>=0.4.2
+numpy>=1.20.2
+streamlit>=0.86.0
+pandas>=1.2.4
