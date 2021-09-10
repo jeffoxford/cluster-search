@@ -84,14 +84,14 @@ def get_table_download_link(df,name):
 
 
 
+# Split 
+serps = pd.DataFrame(records)
 
+st.dataframe(serps)
+st.markdown(get_table_download_link(serps,'serp'), unsafe_allow_html=True)
 
 try :
-    # Split 
-    serps = pd.DataFrame(records)
 
-    st.dataframe(serps)
-    st.markdown(get_table_download_link(serps,'serp'), unsafe_allow_html=True)
     serps_grpby_keyword = serps.groupby("keyword")
     k_urls = 15
 except :
@@ -101,9 +101,10 @@ def filter_k_urls(group_df):
     filtered_df = group_df.loc[group_df['url'].notnull()]
     filtered_df = filtered_df.loc[filtered_df['rank'] <= k_urls]
     return filtered_df
-
-filtered_serps = serps_grpby_keyword.apply(filter_k_urls)
-
+try :
+    filtered_serps = serps_grpby_keyword.apply(filter_k_urls)
+except :
+    pass
 # Combine
 ## Add prefix to column names
 #normed = normed.add_prefix('normed_')
