@@ -84,14 +84,14 @@ def get_table_download_link(df,name):
 
 
 
-# Split 
-serps = pd.DataFrame(records)
 
-st.dataframe(serps)
-st.markdown(get_table_download_link(serps,'serp'), unsafe_allow_html=True)
 
 try :
+    # Split 
+    serps = pd.DataFrame(records)
 
+    st.dataframe(serps)
+    st.markdown(get_table_download_link(serps,'serp'), unsafe_allow_html=True)
     serps_grpby_keyword = serps.groupby("keyword")
     k_urls = 15
 except :
