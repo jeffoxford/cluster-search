@@ -101,10 +101,9 @@ def filter_k_urls(group_df):
     filtered_df = group_df.loc[group_df['url'].notnull()]
     filtered_df = filtered_df.loc[filtered_df['rank'] <= k_urls]
     return filtered_df
-try :
-    filtered_serps = serps_grpby_keyword.apply(filter_k_urls)
-except :
-    pass
+
+filtered_serps = serps_grpby_keyword.apply(filter_k_urls)
+
 # Combine
 ## Add prefix to column names
 #normed = normed.add_prefix('normed_')
